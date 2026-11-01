@@ -129,7 +129,7 @@ AI-health-awareness/
 1. **Clone the repository:**
 ```bash
 git clone https://github.com/Bhoomikas2005/Ai_health_awareness.git
-cd AI-health-awareness
+cd Ai_health_awareness
 ```
 
 2. **Install backend dependencies:**
