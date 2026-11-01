@@ -1,0 +1,291 @@
+# Emergency Alert System - Quick Reference Guide
+
+## ⚠️ What Triggers an Emergency Alert?
+
+The emergency alert automatically activates when your health risk score **exceeds 75** (Critical Level).
+
+```
+Risk Score > 75 = CRITICAL ALERT 🚨
+```
+
+## 🚨 What Happens When Emergency Alert Triggers?
+
+1. **Alert Modal Appears** - Large red popup appears on screen
+2. **Cannot Be Ignored** - Cannot interact with other page elements
+3. **Location Permission** - Browser asks for your location
+4. **Hospitals Found** - Nearby medical facilities are located
+5. **Notifications Sent** - 3 nearest hospitals are notified of your emergency
+
+## 📍 Features in Emergency Modal
+
+### Emergency Actions (3 Quick Buttons)
+
+#### 1️⃣ Find Nearby Hospitals
+- Locates hospitals within 5 km of your location
+- Shows:
+  - Hospital name
+  - Distance from you
+  - Address and phone
+  - "Get Directions" button
+- Opens Google Maps for navigation
+
+#### 2️⃣ Call 911
+- Initiates emergency call
+- Connects directly to emergency services
+- Available 24/7
+
+#### 3️⃣ Open Google Maps
+- Opens full Google Maps in new window
+- Can search for hospitals manually
+- Shows traffic and routes
+
+### Hospital List Information
+
+Each hospital shows:
+- **Name**: Official hospital name
+- **Distance**: How far away (in km)
+- **Address**: Street address and location
+- **Phone**: Direct hospital number
+- **Get Directions**: Link to Google Maps navigation
+
+## 🗺️ How Google Maps Integration Works
+
+1. **Your Location**: Shows on map as blue dot
+2. **Hospitals**: Red/orange markers with hospital icons
+3. **Navigation**: Click hospital → opens Google Maps with directions
+4. **Real-time Info**: Traffic updates, alternative routes
+
+## 📱 Using on Mobile vs Desktop
+
+### Mobile
+- Easier 911 calling (tap = call)
+- Navigation integrates native maps app
+- Smaller modal fits phone screen
+- Use "Get Directions" for turn-by-turn GPS
+
+### Desktop
+- Can contact multiple hospitals
+- Better map overview
+- Copy hospital phone numbers
+- Print directions if needed
+
+## 🔒 Privacy & Safety
+
+**Your location data:**
+- Only shared when you click "Find Hospitals"
+- Transmitted securely (HTTPS encrypted)
+- Not stored permanently
+- Deleted after emergency resolved
+
+**Hospitals receive:**
+- Your location (latitude/longitude)
+- Risk score and level
+- Health summary
+- NOT full medical records
+
+## ⚡ Step-by-Step Emergency Usage
+
+### Scenario: You Get Critical Alert
+
+1. **Alert Appears**
+   - See "CRITICAL HEALTH ALERT" modal
+   - Risk score displayed (e.g., 82)
+   - Three action buttons visible
+
+2. **Find Hospital**
+   - Click "📍 Find Nearby Hospitals"
+   - Grant location permission when prompted
+   - Wait for hospitals to load (2-5 seconds)
+   - See list of nearest hospitals
+
+3. **Choose Option A: Drive Yourself**
+   - Click hospital name or "Get Directions"
+   - Google Maps opens with directions
+   - Follow turn-by-turn navigation
+   - Arrive at hospital emergency room
+
+4. **Choose Option B: Call Ambulance**
+   - Click "📞 Call 911"
+   - Explain your condition to dispatcher
+   - Give address/location info
+   - Stay on line until ambulance arrives
+
+5. **Choose Option C: Already at Hospital**
+   - Show list to someone to drive you
+   - Call hospital directly
+   - Check emergency wait times
+
+## 🏥 Nearby Hospitals Information
+
+### Typical Hospital Info Shown:
+```
+City General Hospital
+Distance: 0.8 km away
+Address: 123 Medical Center Dr, City, State 12345
+Phone: (555) 123-4567
+Specialties: Cardiology, Emergency, Surgery
+Available Beds: 45
+Rating: 4.8 stars
+```
+
+### How Distance Works:
+- **0-1 km**: Walking distance (15-20 minutes)
+- **1-2 km**: Close by (5-10 minute drive)
+- **2-5 km**: Nearby (10-15 minute drive)
+- **5+ km**: Further away (15+ minutes)
+
+## 🚗 Choosing Best Hospital
+
+### Consider These Factors:
+
+1. **Distance** (Closest = Fastest)
+2. **Specialties** (Matches your condition)
+3. **Available Beds** (More beds = shorter wait)
+4. **Rating** (Quality of care)
+
+### Example Priority:
+- Chest pain? → Look for Cardiology
+- Trauma/accident? → Look for Trauma Center
+- General illness? → Any with high rating
+
+## 📞 Hospital Contact Information
+
+### When to Use Each:
+
+- **Use 911 Button** → Life-threatening emergency
+- **Use Get Directions** → Can drive yourself
+- **Use Hospital Phone** → Non-emergency, want to call ahead
+
+## ❌ Closing Emergency Modal
+
+You can close the modal by:
+- Clicking the **X** button in top-right corner
+- Only if you acknowledge the situation
+- Emergency alert data is saved to your record
+
+## 🔄 What Happens After Alert
+
+1. **To You:**
+   - Keep risk levels monitored
+   - Follow doctor recommendations
+   - Schedule follow-up appointments
+
+2. **To Hospitals:**
+   - Receive your emergency alert
+   - Prepare care team
+   - Alert emergency department
+   - Prepare ICU if needed
+
+3. **To Your Records:**
+   - Emergency documented
+   - Timestamp recorded
+   - Location coordinates saved
+   - Risk score history updated
+
+## ⚙️ Settings & Customization
+
+### Change Alert Threshold:
+In your profile settings:
+- **Critical**: > 75 (default)
+- **High**: > 60
+- **Medium**: > 40
+
+### Allow/Deny Location Sharing:
+- First alert asks for permission
+- Can allow "Always" or "Only this time"
+- Can be changed in browser settings
+
+### Disable Alerts:
+```
+Note: Not recommended for safety reasons
+Contact admin@health-ai.com to disable
+```
+
+## 🆘 Emergency Service Numbers
+
+### By Location:
+
+**United States:**
+- Emergency: 911
+- Poison Control: 1-800-222-1222
+- Mental Health Crisis: 988
+
+**United Kingdom:**
+- Emergency: 999
+- NHS Non-Emergency: 111
+
+**Canada:**
+- Emergency: 911
+- Poison Control: 1-800-268-9017
+
+**Australia:**
+- Emergency: 000
+- Poison Control: 131126
+
+## ❓ Frequently Asked Questions
+
+### Q: Will Finding Hospitals Cost Money?
+**A:** No. The service is free to use. You only pay for actual medical services at the hospital.
+
+### Q: Are My Location Details Private?
+**A:** Yes. Your location is only shared with nearby hospitals during critical alerts and is deleted after resolution.
+
+### Q: Can I Trigger Alert Manually?
+**A:** Not from the dashboard. Alerts only trigger when risk score > 75. Contact support to report a false positive.
+
+### Q: What if I Refuse Hospital Data?
+**A:** You can use the system without sharing location. Call 911 directly instead.
+
+### Q: Can I See What Hospitals Received?
+**A:** Yes. Check your emergency history in your profile/settings.
+
+## 📊 Alert History
+
+View all past alerts:
+1. Go to **Profile** → **Emergency History**
+2. See all triggered alerts with:
+   - Date and time
+   - Risk score at time of alert
+   - Location where triggered
+   - Hospitals contacted
+   - Actions taken
+
+## 🎓 Training & Support
+
+### Getting Help:
+- **FAQ**: In-app help center
+- **Chat Support**: Live chat Mon-Fri 9am-6pm
+- **Phone**: 1-800-XXX-XXXX
+- **Email**: emergency@health-ai.com
+
+### Report Issues:
+- False alerts?
+- Wrong hospitals?
+- Location not working?
+- Email: support@health-ai.com
+
+---
+
+## ⚡ Remember:
+
+**In a True Emergency:**
+- Call 911 for life-threatening situations
+- Don't wait for app/system
+- Always inform emergency responders about your health conditions
+- Keep emergency contacts updated
+
+**This System Is:**
+✅ For monitoring and alerts  
+✅ To help you find care faster  
+✅ To notify hospitals in advance  
+
+**This System Is NOT:**
+❌ A replacement for 911  
+❌ Medical advice  
+❌ A diagnosis tool  
+
+---
+
+**Last Updated:** March 6, 2026  
+**Version:** 1.0  
+**Status:** Active

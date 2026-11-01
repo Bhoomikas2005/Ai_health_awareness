@@ -1,0 +1,210 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║        🚀 HOW TO START - Medical Image Analysis Feature                  ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PREREQUISITE:
+═════════════════════════════════════════════════════════════════════════════
+✓ Node.js installed
+✓ npm installed
+✓ Both in C:\Program Files\nodejs\
+
+
+METHOD 1: BATCH FILES (EASIEST)
+═════════════════════════════════════════════════════════════════════════════
+
+TWO TERMINALS WILL OPEN AUTOMATICALLY:
+
+Step 1: Open run-backend.bat
+└─ Double-click: run-backend.bat
+└─ Backend starts on http://localhost:5000
+└─ Keep this window open
+
+Step 2: Open run-frontend.bat
+└─ Double-click: run-frontend.bat
+└─ Frontend starts on http://localhost:5173
+└─ Keep this window open
+
+Step 3: Open your browser
+└─ Go to: http://localhost:5173
+└─ Click Features → Disease Prediction
+└─ Click "📸 Medical Image Analysis"
+└─ Upload your image!
+
+
+METHOD 2: POWERSHELL (MANUAL)
+═════════════════════════════════════════════════════════════════════════════
+
+TERMINAL 1 - Start Backend:
+───────────────────────────
+> cd "c:\Users\Redmi\Downloads\AI-health-awareness\AI-health-awareness\backend"
+> & "C:\Program Files\nodejs\node.exe" "server.js"
+
+Expected output:
+[dotenv] injecting env (0) from .env
+Server running on http://localhost:5000
+
+WAIT FOR "Server running..." message before starting frontend!
+
+
+TERMINAL 2 - Start Frontend:
+───────────────────────────
+> cd "c:\Users\Redmi\Downloads\AI-health-awareness\AI-health-awareness\frontend"
+> & "C:\Program Files\nodejs\node.exe" "node_modules\vite\bin\vite.js"
+
+Expected output:
+VITE v7.1.5  ready in 427 ms
+➜  Local:   http://localhost:5173/
+
+
+STEP 3: Open Browser
+───────────────────
+> Open: http://localhost:5173
+> Navigate to: Disease Prediction
+> Select: "📸 Medical Image Analysis" mode
+> Upload an image
+> Click: "🔬 Analyze Image"
+> Review the medical report!
+
+
+TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════════════
+
+PORT 5000 ALREADY IN USE:
+> Open Task Manager (Ctrl+Shift+Esc)
+> Find node.exe process
+> Right-click → End Task
+> Wait 2 seconds
+> Try starting backend again
+
+PORT 5173 ALREADY IN USE:
+> Same process as above
+
+"node is not recognized":
+> Use full path: "C:\Program Files\nodejs\node.exe"
+
+"Cannot find module":
+> Check you're in correct directory
+> Make sure package.json exists in that folder
+> Try: npm install (in backend and frontend folders)
+
+Frontend shows blank page:
+> Press F12 to open console
+> Check for errors
+> Refresh page (Ctrl+Shift+R)
+> Ensure backend is running
+
+
+VERIFY BOTH ARE WORKING:
+═════════════════════════════════════════════════════════════════════════════
+
+Backend test:
+> Open browser: http://localhost:5000/
+> Should show JSON:
+{
+  "message": "AI Health Awareness Backend Server",
+  "status": "Running",
+  "endpoints": {
+    "imageAnalysis": "/api/image-analysis"
+  }
+}
+
+Frontend test:
+> Open browser: http://localhost:5173/
+> Should load the app homepage
+> Should NOT show any red errors
+
+
+QUICK TEST OF IMAGE ANALYSIS:
+═════════════════════════════════════════════════════════════════════════════
+
+1. Both servers running?
+   ✓ Backend: http://localhost:5000 (check root endpoint)
+   ✓ Frontend: http://localhost:5173 (page loads)
+
+2. Go to Disease Prediction
+   ✓ URL: http://localhost:5173/disease-prediction
+
+3. Click "📸 Medical Image Analysis" tab
+   ✓ Should show upload interface
+
+4. Upload a test image
+   ✓ Any JPG, PNG, GIF, WebP, TIFF (< 10MB)
+   ✓ Try naming with medical keywords:
+     - fracture.jpg
+     - xray.jpg
+     - mri.jpg
+     - pneumonia.jpg
+
+5. Click "🔬 Analyze Image"
+   ✓ Should show analysis result in 1-2 seconds
+   ✓ Should show detailed medical report
+
+6. Review the report
+   ✓ Image analysis details
+   ✓ Risk assessment
+   ✓ Disease predictions
+   ✓ Treatment recommendations
+
+
+SUCCESSFUL STARTUP SIGNS:
+═════════════════════════════════════════════════════════════════════════════
+
+BACKEND:
+✓ "[dotenv] injecting env (0) from .env"
+✓ "Server running on http://localhost:5000"
+✓ No error messages
+✓ Port 5000 listening
+
+FRONTEND:
+✓ "VITE v7.1.5 ready in XXX ms"
+✓ "➜ Local: http://localhost:5173/"
+✓ No error messages
+✓ Port 5173 listening
+
+
+SHUT DOWN:
+═════════════════════════════════════════════════════════════════════════════
+
+To stop everything:
+
+1. Backend terminal
+   > Press Ctrl+C
+   > Type: Y (if asked)
+   > Close the terminal window
+
+2. Frontend terminal
+   > Press Ctrl+C
+   > Type: Y (if asked)
+   > Close the terminal window
+
+
+NEED HELP?
+═════════════════════════════════════════════════════════════════════════════
+
+1. Check the documentation files:
+   - MEDICAL_IMAGE_ANALYSIS_GUIDE.md
+   - IMAGE_ANALYSIS_SUMMARY.txt
+   - QUICK_START_IMAGE_ANALYSIS.txt
+
+2. Common issues:
+   - Port already in use → Kill old process
+   - Module not found → npm install in that directory
+   - Image won't upload → Check file format and size
+   - Analysis not starting → Check browser console (F12)
+
+3. Check logs:
+   - Backend console shows API errors
+   - Frontend console (F12) shows JavaScript errors
+   - Both important for debugging
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+You're all set! The Medical Image Analysis feature is fully functional.
+
+Start with: run-backend.bat and run-frontend.bat
+Then visit: http://localhost:5173
+
+═════════════════════════════════════════════════════════════════════════════

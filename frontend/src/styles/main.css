@@ -1,0 +1,164 @@
+/* ------------------- Global Reset ------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: #f8fafc;
+  color: #2d3748;
+  transition: all 0.3s ease-in-out;
+  min-height: 100vh;
+}
+
+/* ------------------- Navbar ------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px 40px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ------------------- Page Layout ------------------- */
+.page {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page h2 {
+  margin-bottom: 30px;
+  color: #1a202c;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+/* ------------------- Disclaimer Banner ------------------- */
+.disclaimer-banner {
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+  padding: 12px 20px;
+  color: #92400e;
+  font-size: 0.9rem;
+  text-align: center;
+  position: relative;
+}
+
+/* ------------------- Forms & Inputs ------------------- */
+input, textarea, select {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ------------------- Error Messages ------------------- */
+.error-message {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #fc8181;
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+/* ------------------- Results & Cards ------------------- */
+.quiz-result {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+  border-top: 5px solid #667eea;
+}
+
+/* ------------------- Chatbot Alignment ------------------- */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.message-container {
+  display: flex;
+  width: 100%;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+}
+
+.message-container.ai {
+  justify-content: flex-start;
+}
+
+/* External Link Reminder: Ensure rel="noopener noreferrer" is used on all target="_blank" links */
+
+/* ------------------- Footer ------------------- */
+.footer {
+  background: #1a202c;
+  color: #a0aec0;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.footer strong {
+  color: white;
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+}
