@@ -2,7 +2,11 @@ export const predictDisease = async (req, res) => {
   try {
     const { symptoms } = req.body;
     
-    if (!symptoms || !Array.isArray(symptoms) || symptoms.length === 0) {
+    if (
+      !Array.isArray(symptoms) ||
+      symptoms.length === 0 ||
+      symptoms.some((symptom) => typeof symptom !== "string" || !symptom.trim())
+    ) {
       return res.status(400).json({ error: "Please provide at least one symptom" });
     }
     
@@ -52,31 +56,44 @@ export const predictDisease = async (req, res) => {
       }
     };
     
-    // Create a key from symptoms
-    const sortedSymptoms = symptoms.map(s => s.toLowerCase()).sort().join(",");
-    
-    let prediction = null;
-    
-    // Check for exact match
-    for (const [key, value] of Object.entries(diseaseDatabase)) {
-      if (key === sortedSymptoms) {
-        prediction = value;
-        break;
-      }
-    }
-    
-    // If no exact match, find partial matches
+    const normalize = (symptom) => symptom.trim().toLowerCase();
+    const selectedSymptoms = [...new Set(symptoms.map(normalize))];
+    const selectedSet = new Set(selectedSymptoms);
+    const exactMatch = Object.entries(diseaseDatabase).find(([key]) => {
+      const databaseSymptoms = key.split(",").map(normalize);
+      return databaseSymptoms.length === selectedSet.size &&
+        databaseSymptoms.every((symptom) => selectedSet.has(symptom));
+    });
+
+    let prediction = exactMatch?.[1] ?? null;
+
     if (!prediction) {
-      for (const [key, value] of Object.entries(diseaseDatabase)) {
-        const dbSymptoms = key.split(",");
-        const commonSymptoms = symptoms.filter(s => 
-          dbSymptoms.includes(s.toLowerCase())
-        );
-        
-        if (commonSymptoms.length >= Math.ceil(symptoms.length * 0.5)) {
-          prediction = { ...value, confidence: "45-55%" };
-          break;
-        }
+      const partialMatches = Object.entries(diseaseDatabase)
+        .map(([key, value]) => {
+          const databaseSymptoms = key.split(",").map(normalize);
+          const matchedSymptoms = databaseSymptoms.filter((symptom) =>
+            selectedSet.has(symptom)
+          );
+          const unionSize = new Set([...selectedSymptoms, ...databaseSymptoms]).size;
+
+          return {
+            value,
+            matchedSymptoms,
+            similarity: matchedSymptoms.length / unionSize,
+          };
+        })
+        .filter(({ matchedSymptoms, similarity }) =>
+          matchedSymptoms.length >= 2 && similarity >= 0.5
+        )
+        .sort((a, b) => b.similarity - a.similarity);
+
+      const bestMatch = partialMatches[0];
+      if (bestMatch) {
+        prediction = {
+          ...bestMatch.value,
+          confidence: "45-55%",
+          matchedSymptoms: bestMatch.matchedSymptoms,
+        };
       }
     }
     
@@ -93,7 +110,7 @@ export const predictDisease = async (req, res) => {
     res.json({
       symptoms,
       prediction,
-      disclaimer: "This is an AI-based prediction tool. Please consult a medical professional for accurate diagnosis.",
+      disclaimer: "This symptom-based result is informational, not a medical diagnosis. Please consult a qualified healthcare professional for advice.",
       timestamp: new Date()
     });
   } catch (error) {

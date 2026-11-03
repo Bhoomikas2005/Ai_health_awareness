@@ -167,7 +167,6 @@ function analyzePixelDensity(img) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
-    const alpha = data[i + 3];
     
     // Calculate brightness using weighted formula (better for medical images)
     const brightness = (0.299 * r + 0.587 * g + 0.114 * b);
@@ -325,7 +324,7 @@ function performImageAnalysis(pixelDensity, colorDistribution, width, height, fi
   // DERMATITIS/SKIN CONDITION DETECTION: Surface level red with color imbalance
   // Skin conditions show localized color changes = high red, uneven RGB distribution
   if (colorDistribution.red > 60 && Math.abs(colorDistribution.red - colorDistribution.green) > 15 &&
-      pixelDensity.darkPixels < 30 && imageType === 'General image') {
+      pixelDensity.darkPixels < 30 && imagingType === 'General image') {
     conditions.push({
       ...medicalConditions.dermatitis,
       confidence: Math.min(0.86, 0.70 + ((colorDistribution.red - colorDistribution.green) / 100) * 0.18),

@@ -21,19 +21,33 @@ function DiseasePrediction() {
   useEffect(() => {
     // Fetch available symptoms
     fetch(`${API_URL}/api/disease/symptoms`)
-      .then((res) => res.json())
-      .then((data) => setAvailableSymptoms(data.symptoms || []))
-      .catch((err) => setError("Failed to load symptoms"));
+      .then(async (res) => {
+        if (!res.ok) {
+          throw new Error("Failed to load symptoms");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (!Array.isArray(data.symptoms)) {
+          throw new Error("The symptom list is unavailable");
+        }
+        setAvailableSymptoms(data.symptoms);
+      })
+      .catch((err) => setError(err.message || "Failed to load symptoms"));
   }, []);
 
   const addSymptom = (symptom) => {
     if (!symptoms.includes(symptom)) {
       setSymptoms([...symptoms, symptom]);
+      setPrediction(null);
+      setError("");
     }
   };
 
   const removeSymptom = (symptom) => {
     setSymptoms(symptoms.filter((s) => s !== symptom));
+    setPrediction(null);
+    setError("");
   };
 
   const predictDisease = async () => {
@@ -54,9 +68,18 @@ function DiseasePrediction() {
       });
 
       const data = await res.json();
-      setPrediction(data.prediction);
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to predict disease");
+      }
+      if (!data.prediction) {
+        throw new Error("The prediction service returned no result");
+      }
+      setPrediction({
+        ...data.prediction,
+        disclaimer: data.disclaimer,
+      });
     } catch (err) {
-      setError("Failed to predict disease. Please try again.");
+      setError(err.message || "Failed to predict disease. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -451,6 +474,13 @@ function DiseasePrediction() {
                 <label>Description:</label>
                 <p>{prediction.description}</p>
               </div>
+
+              {prediction.matchedSymptoms && (
+                <div className="detail-item">
+                  <label>Symptoms matched:</label>
+                  <p>{prediction.matchedSymptoms.join(", ")}</p>
+                </div>
+              )}
 
               <div className="detail-item">
                 <label>Severity:</label>
